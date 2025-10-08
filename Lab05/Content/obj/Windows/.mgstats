@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab05/Content/SimpleShading.fx","C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab05/Content/bin/Windows/SimpleShading.xnb","EffectProcessor","CompiledEffectContent",1752,2444,0.7716318
+"C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab05/Content/Torus.fbx","C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab05/Content/bin/Windows/Torus.xnb","ModelProcessor","ModelContent",27936,14519,0.1934467

@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Assignment1/Content/explorer.png","C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Assignment1/Content/bin/Windows/Content/explorer.xnb","TextureProcessor","Texture2DContent",17343,163925,0.264349
+"C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Assignment1/Content/Font.spritefont","C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Assignment1/Content/bin/Windows/Content/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21529,0.3371844
+"C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Assignment1/Content/Square (1).png","C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Assignment1/Content/bin/Windows/Content/Square (1).xnb","TextureProcessor","Texture2DContent",213,4181,0.0080633

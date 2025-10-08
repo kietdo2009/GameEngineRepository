@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab07/Content/Font.spritefont","C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab07/Content/bin/Windows/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21529,0.3580829
+"C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab07/Content/SimpleShading.fx","C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab07/Content/bin/Windows/SimpleShading.xnb","EffectProcessor","CompiledEffectContent",5725,6917,0.7295926
+"C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab07/Content/Sphere.FBX","C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab07/Content/bin/Windows/Sphere.xnb","ModelProcessor","ModelContent",39360,24313,0.3769299
+"C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab07/Content/Square (1).png","C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab07/Content/bin/Windows/Square (1).xnb","TextureProcessor","Texture2DContent",213,4181,0.2487292
