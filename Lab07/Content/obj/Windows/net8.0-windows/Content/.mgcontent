@@ -4,10 +4,14 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab07/Content/Font.spritefont</File>
-    <File>C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab07/Content/Sphere.FBX</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab07/Content/Font.spritefont</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab07/Content/SimpleShading.fx</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab07/Content/Sphere.FBX</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab07/Content/Square (1).png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>

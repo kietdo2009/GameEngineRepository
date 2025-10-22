@@ -1,6 +1,4 @@
-﻿// Rigidbody.cs
-
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace CPI311.GameEngine
 {
@@ -11,21 +9,12 @@ namespace CPI311.GameEngine
         public Vector3 Acceleration { get; set; }
         public Vector3 Impulse { get; set; }
 
-        public Rigidbody()
-        {
-            Mass = 1.0f;
-            Velocity = Vector3.Zero;
-            Acceleration = Vector3.Zero;
-            Impulse = Vector3.Zero;
-        }
-
         public void Update()
         {
-            float elapsedGameTime = 1.0f / 60.0f; // Assuming 60 FPS
-
-            Velocity += Acceleration * elapsedGameTime + Impulse / Mass;
-            Transform.LocalPosition += Velocity * elapsedGameTime;
+            Velocity += Acceleration * Time.ElapsedGameTime + Impulse / Mass;
+            Transform.LocalPosition += Velocity * Time.ElapsedGameTime;
             Impulse = Vector3.Zero;
         }
+
     }
 }

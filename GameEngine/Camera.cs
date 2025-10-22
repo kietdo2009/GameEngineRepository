@@ -2,19 +2,23 @@
 
 namespace CPI311.GameEngine
 {
-    public class Camera: Component
+    public class Camera : Component // <-- Component is added at Lab6
     {
-        public float FieldOfView { get; set; } // Projection Matrix
-        public float AspectRatio { get; set; }
-        public float NearPlane { get; set; }
-        public float FarPlane { get; set; }
-        public Transform Transform { get; set; }//View atrix
+        // *** Properties ***
+        public float FieldOfView { get; set; }  // For Projection Matrix
+        public float AspectRatio { get; set; } // For Projection Matrix
+        public float NearPlane { get; set; } // For Projection Matrix
+        public float FarPlane { get; set; } // For Projection Matrix
 
-        //Constructor ***********************************
+        public Transform Transform { get; set; } // For View Matrix
 
         public Matrix Projection
         {
-            get { return Matrix.CreatePerspectiveFieldOfView(FieldOfView, AspectRatio, NearPlane, FarPlane); }
+            get
+            {
+                return Matrix.CreatePerspectiveFieldOfView(
+                FieldOfView, AspectRatio, NearPlane, FarPlane);
+            }
         }
         public Matrix View
         {
@@ -26,14 +30,18 @@ namespace CPI311.GameEngine
                 Transform.Up);
             }
         }
+        // *** Constructor ***
         public Camera()
         {
-
             FieldOfView = MathHelper.PiOver2;
             AspectRatio = 1.33f;
-            NearPlane = .1f;
+            NearPlane = 0.1f;
             FarPlane = 100f;
-            Transform = new Transform(); //Need to initialize in Game Class
+            Transform = null; // Need to initialize in Game Class
+
         }
+
+
+
     }
 }

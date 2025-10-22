@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+
 namespace Lab07
 {
     public class Lab07 : Game
@@ -21,7 +22,7 @@ namespace Lab07
         public Camera camera;
         public Transform cameraTransform;
         public Model model;
-        
+
         int lastSecondCollisions = 0;
         //**********************************************LAB 6
 
@@ -29,10 +30,13 @@ namespace Lab07
         // Lab 7 ******************************
         int numberCollisions = 0;
         SpriteFont font;
-        bool haveTreadRunning = false;
+
+        // *** CORRECTION 1.1: Fixed typo "Tread" to "Thread"
+        bool haveThreadRunning = false;
+
         int lastSecondCollision = 0;
         List<Renderer> renderers;
-        
+
         Light light;
         Transform lightTransform;
 
@@ -53,7 +57,12 @@ namespace Lab07
             Time.Initialize();
             // Lab 7 ******************************
             ThreadPool.QueueUserWorkItem(new WaitCallback(CollisionReset));
-            List<Renderer> renderers = new List<Renderer>();
+
+            // *** CORRECTION 2: Initialized class field, not a new local variable
+            renderers = new List<Renderer>();
+
+            // *** CORRECTION 1.2: Set the thread flag to true
+            haveThreadRunning = true;
 
             random = new Random();
             transforms = new List<Transform>();
@@ -105,7 +114,7 @@ namespace Lab07
             light = new Light();
             light.Transform = lightTransform;
 
-            
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -123,7 +132,8 @@ namespace Lab07
             {
                 if (boxCollider.Collides(colliders[i], out normal))
                 {
-                    //numberCollisions++;
+                    // *** CORRECTION 1.3: Uncommented collision counter
+                    numberCollisions++;
                     if (Vector3.Dot(normal, rigidbodies[i].Velocity) < 0)
                         rigidbodies[i].Impulse +=
                         Vector3.Dot(normal, rigidbodies[i].Velocity) * -2 * normal;
@@ -132,7 +142,8 @@ namespace Lab07
                 {
                     if (colliders[i].Collides(colliders[j], out normal))
                     {
-                        //numberCollisions++;
+                        // *** CORRECTION 1.3: Uncommented collision counter
+                        numberCollisions++;
                         Vector3 velocityNormal = Vector3.Dot(normal,
                         rigidbodies[i].Velocity - rigidbodies[j].Velocity) * -2
                         * normal * rigidbodies[i].Mass * rigidbodies[j].Mass;
@@ -149,17 +160,11 @@ namespace Lab07
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            //foreach (Transform transform in transforms)
-            //    model.Draw(transform.World, camera.View, camera.Projection);
-            for (int i = 0; i < transforms.Count; i++)
-            {
-                Transform transform = transforms[i];
-                float speed = rigidbodies[i].Velocity.Length();
-                float speedValue = MathHelper.Clamp(speed / 20f, 0, 1);
-                (model.Meshes[0].Effects[0] as BasicEffect).DiffuseColor =
-                new Vector3(speedValue, speedValue, 1);
-                model.Draw(transform.World, camera.View, camera.Projection);
-            }
+
+            // *** CORRECTION 4: Replaced old drawing loop with new Renderer loop
+            for (int i = 0; i < renderers.Count; i++)
+                renderers[i].Draw();
+
             _spriteBatch.Begin();
             _spriteBatch.DrawString(font, "Collisions: " + lastSecondCollisions, new Vector2(10, 10), Color.White);
             _spriteBatch.End();
@@ -167,7 +172,8 @@ namespace Lab07
         }
         private void CollisionReset(Object obj)
         {
-            while (haveTreadRunning)
+            
+            while (haveThreadRunning)
             {
                 lastSecondCollisions = numberCollisions;
                 numberCollisions = 0;
@@ -185,9 +191,10 @@ namespace Lab07
                 (float)random.NextDouble());
             direction.Normalize();
             sphere.Velocity = direction * ((float)random.NextDouble() * 5 + 5);
-            Texture2D texture = Content.Load<Texture2D>("Square");
+            Texture2D texture = Content.Load<Texture2D>("Square (1)");
+
             Renderer renderer = new Renderer(model, transform, camera, Content, GraphicsDevice, light, "SimpleShading", 1, 20f, texture);
-            
+
             //make sphere collider
             SphereCollider sphereCollider = new SphereCollider();
             sphereCollider.Radius = 1.0f * transform.LocalScale.Y;
@@ -196,8 +203,9 @@ namespace Lab07
             colliders.Add(sphereCollider);
             renderers.Add(renderer);
 
-            
+            // *** CORRECTION 3: Added the new rigidbody to the simulation list
+            rigidbodies.Add(sphere);
+
         }
     }
 }
-
