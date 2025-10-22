@@ -3,7 +3,7 @@
 namespace CPI311.GameEngine
 {
     public class Camera : Component // <-- Component is added at Lab6
-    {
+    { 
         // *** Properties ***
         public float FieldOfView { get; set; }  // For Projection Matrix
         public float AspectRatio { get; set; } // For Projection Matrix
@@ -14,17 +14,12 @@ namespace CPI311.GameEngine
 
         public Matrix Projection
         {
-            get
-            {
-                return Matrix.CreatePerspectiveFieldOfView(
-                FieldOfView, AspectRatio, NearPlane, FarPlane);
-            }
+            get { return Matrix.CreatePerspectiveFieldOfView(
+                FieldOfView, AspectRatio, NearPlane, FarPlane); }
         }
         public Matrix View
         {
-            get
-            {
-                return Matrix.CreateLookAt(
+            get { return Matrix.CreateLookAt(
                 Transform.LocalPosition,
                 Transform.LocalPosition + Transform.Forward,
                 Transform.Up);

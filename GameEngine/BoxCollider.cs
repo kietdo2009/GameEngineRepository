@@ -4,17 +4,17 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CPI311.GameEngine
 {
-    public class BoxCollider : Collider
+    public class BoxCollider: Collider
     {
         public float Size { get; set; }
 
-        private static Vector3[] normals =
+        private static Vector3[] normals = 
             { Vector3.Up, Vector3.Down, Vector3.Right,
             Vector3.Left,Vector3.Forward, Vector3.Backward,};
 
-        private static Vector3[] vertices = {
-            new Vector3(-1,-1,1),new Vector3(1,-1,1), new Vector3(1,-1,-1),
-            new Vector3(-1,-1,-1), new Vector3(-1,1,1), new Vector3(1,1,1),
+        private static Vector3[] vertices = { 
+            new Vector3(-1,-1,1),new Vector3(1,-1,1), new Vector3(1,-1,-1), 
+            new Vector3(-1,-1,-1), new Vector3(-1,1,1), new Vector3(1,1,1), 
             new Vector3(1,1,-1), new Vector3(-1,1,-1), };
 
         private static int[] indices = {
@@ -45,7 +45,7 @@ namespace CPI311.GameEngine
                         Vector3 c = vertices[indices[baseIndex + 2]] * Size;
                         Vector3 n = normals[i];
                         Vector3 p = collider.Transform.Position;
-                        float d = Math.Abs(Vector3.Dot(p - a, n));// calculate the distance to the plane 
+                        float d = Math.Abs( Vector3.Dot(p-a, n ));// calculate the distance to the plane 
 
                         if (d < collider.Radius)
                         {

@@ -77,7 +77,7 @@ namespace Lab06
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            model = Content.Load<Model>("Sphere (1)");
+            model = Content.Load<Model>("Sphere");
 
             cameraTransform = new Transform();
             cameraTransform.LocalPosition = Vector3.Backward * 20; // (0, 0, -20)
