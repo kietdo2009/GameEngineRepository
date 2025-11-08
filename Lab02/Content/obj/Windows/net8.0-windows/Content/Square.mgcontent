@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab02/Content/Square.png</SourceFile>
+  <SourceFile>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab02/Content/Square.png</SourceFile>
   <SourceTime>2025-09-02T18:06:50.3239583-07:00</SourceTime>
-  <DestFile>C:/Users/kietd/Downloads/CPI311_2025_Do (2) (1)/CPI311_2025_Do/Lab02/Content/bin/Windows/Content/Square.xnb</DestFile>
-  <DestTime>2025-09-02T18:16:05.1517825-07:00</DestTime>
+  <DestFile>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab02/Content/bin/Windows/Content/Square.xnb</DestFile>
+  <DestTime>2025-10-21T19:10:28.9372274-07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2025-06-02T03:31:02-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

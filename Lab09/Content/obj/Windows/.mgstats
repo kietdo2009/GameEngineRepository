@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab09/Content/cube.FBX","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab09/Content/bin/Windows/cube.xnb","ModelProcessor","ModelContent",18544,1499,0.3698968
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab09/Content/Sphere.FBX","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab09/Content/bin/Windows/Sphere.xnb","ModelProcessor","ModelContent",39360,24313,0.0294266

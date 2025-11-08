@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab08/Content/Gun.wav","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab08/Content/bin/Windows/Content/Gun.xnb","SoundEffectProcessor","SoundEffectContent",8707,8700,0.4508787
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab08/Content/SimpleShading (1).fx","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab08/Content/bin/Windows/Content/SimpleShading (1).xnb","EffectProcessor","CompiledEffectContent",3874,5725,0.5276668
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab08/Content/Sphere.FBX","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab08/Content/bin/Windows/Content/Sphere.xnb","ModelProcessor","ModelContent",39360,24313,0.1597767
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab08/Content/Square.png","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab08/Content/bin/Windows/Content/Square.xnb","TextureProcessor","Texture2DContent",213,4181,0.0459486

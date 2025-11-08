@@ -30,6 +30,32 @@ namespace CPI311.GameEngine
         }
 
         // *** Properties ***
+        //public Vector3 Scale
+        //{
+        //    get
+        //    {
+        //        Vector3 scale, pos; Quaternion rot;
+        //        world.Decompose(out scale, out rot, out pos);
+        //        return scale;
+        //    }
+        //    set
+        //    {
+        //        if (Parent == null) LocalScale = value;
+        //        else
+        //        {
+        //            Vector3 scale, pos; Quaternion rot;
+        //            world.Decompose(out scale, out rot, out pos);
+        //            Matrix total = Matrix.CreateScale(value) *
+        //                Matrix.CreateFromQuaternion(rot) * Matrix.CreateTranslation(pos);
+        //            Vector3 s, t; Quaternion r;
+        //            (total * Matrix.Invert(
+        //                    Matrix.CreateFromQuaternion(LocalRotation) *
+        //                    Matrix.CreateTranslation(LocalPosition) * Parent.world)).Decompose(out s, out r, out t);
+        //            LocalScale = s;
+        //        }
+        //    }
+        //}
+        //Assignment 2
         public Vector3 Scale
         {
             get
@@ -46,15 +72,18 @@ namespace CPI311.GameEngine
                     Vector3 scale, pos; Quaternion rot;
                     world.Decompose(out scale, out rot, out pos);
                     Matrix total = Matrix.CreateScale(value) *
-                        Matrix.CreateFromQuaternion(rot) * Matrix.CreateTranslation(pos);
+                    Matrix.CreateFromQuaternion(rot) * Matrix.CreateTranslation(pos);
                     Vector3 s, t; Quaternion r;
                     (total * Matrix.Invert(
-                            Matrix.CreateFromQuaternion(LocalRotation) *
-                            Matrix.CreateTranslation(LocalPosition) * Parent.world)).Decompose(out s, out r, out t);
+                    Matrix.CreateFromQuaternion(LocalRotation) *
+                    Matrix.CreateTranslation(LocalPosition) * Parent.world)
+                    ).Decompose(out s, out r, out t);
                     LocalScale = s;
                 }
             }
         }
+
+        //**********
         public Quaternion Rotation
         {
             get { return Quaternion.CreateFromRotationMatrix(World); }
@@ -75,24 +104,40 @@ namespace CPI311.GameEngine
                 }
             }
         }
-
         public Vector3 Position
         {
-            get { return World.Translation; }
-            // **** HW2 ****
+            get { return world.Translation; }
             set
             {
-                if (Parent == null) LocalPosition = value;
+                if (Parent == null)
+                    LocalPosition = value;
                 else
                 {
                     Matrix total = World;
                     total.Translation = value;
                     LocalPosition = (Matrix.Invert(Matrix.CreateScale(LocalScale) *
-                        Matrix.CreateFromQuaternion(LocalRotation)) *
+                    Matrix.CreateFromQuaternion(LocalRotation)) *
                     total * Matrix.Invert(Parent.World)).Translation;
                 }
             }
         }
+        //public Vector3 Position
+        //{
+        //    get { return World.Translation; }
+        //    // **** HW2 ****
+        //    set
+        //    {
+        //        if (Parent == null) LocalPosition = value;
+        //        else
+        //        {
+        //            Matrix total = World;
+        //            total.Translation = value;
+        //            LocalPosition = (Matrix.Invert(Matrix.CreateScale(LocalScale) *
+        //                Matrix.CreateFromQuaternion(LocalRotation)) *
+        //            total * Matrix.Invert(Parent.World)).Translation;
+        //        }
+        //    }
+        //}
 
 
         public Vector3 LocalPosition
@@ -151,6 +196,6 @@ namespace CPI311.GameEngine
 
 
         // *********************************
-
+        
     }
 }
