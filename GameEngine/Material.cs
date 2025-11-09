@@ -18,6 +18,9 @@ namespace CPI311.GameEngine
         public Light Light { get; set; }
         public int Passes { get { return effect.CurrentTechnique.Passes.Count; } }
         public int CurrentTechnique { get; set; }
+        // *** 1. ADD NEW PROPERTIES FOR TILING/OFFSET ***
+        public Vector2 Tiling { get; set; }
+        public Vector2 Offset { get; set; }
         public Material(Matrix world, Camera camera, Light light, ContentManager
         content,
         string filename, int currrentTechnique, float shininess, Texture2D
@@ -35,6 +38,9 @@ namespace CPI311.GameEngine
             Diffuse = Color.Gray.ToVector3();
             Ambient = Color.Gray.ToVector3();
             Specular = Color.Gray.ToVector3();
+            // *** 2. INITIALIZE TILING AND OFFSET PROPERTIES ***
+            Tiling = Vector2.One; // Default tiling is (1, 1)
+            Offset = Vector2.Zero; // Default offset is (0, 0)
         }
         public virtual void Apply(int currentPass)
         {
@@ -49,6 +55,9 @@ namespace CPI311.GameEngine
             effect.Parameters["SpecularColor"].SetValue(Specular);
             effect.Parameters["Shininess"].SetValue(Shininess);
             effect.Parameters["DiffuseTexture"].SetValue(Texture);
+            // *** 3. PASS NEW VALUES TO THE SHADER ***
+            effect.Parameters["Tiling"]?.SetValue(Tiling);
+            effect.Parameters["Offset"]?.SetValue(Offset);
             effect.CurrentTechnique.Passes[currentPass].Apply();
         }
     }

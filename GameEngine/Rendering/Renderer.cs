@@ -40,6 +40,9 @@ namespace CPI311.GameEngine
             {
                 Material.Camera = Camera; // Update Material's properties
                 Material.World = ObjectTransform.World;
+                //ass3
+                Material.CurrentTechnique = this.CurrentTechnique;
+
                 for (int i = 0; i < Material.Passes; i++)
                 {
                     Material.Apply(i); // Look at the Material's Apply method

@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace CPI311.GameEngine
 {
-    public class Transform
+    public class Transform : Component, IUpdateable
     {
         // *** Variables ***
         private Vector3 localScale;
@@ -196,6 +196,10 @@ namespace CPI311.GameEngine
 
 
         // *********************************
-        
+        public void Update()
+        {
+            
+            UpdateWorld();
+        }
     }
 }

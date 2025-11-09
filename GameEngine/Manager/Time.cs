@@ -16,6 +16,14 @@ namespace CPI311.GameEngine
             ElapsedGameTime = 0;
             TotalGameTime = new TimeSpan(0);
         }
+        public static void Update(GameTime gameTime, float speed)
+        {
+            // 2. Assign the *scaled* value to your existing variable
+            ElapsedGameTime =
+                (float)gameTime.ElapsedGameTime.TotalSeconds * speed;
+
+            TotalGameTime = gameTime.TotalGameTime;
+        }
         public static void Update(GameTime gameTime)
         {
             ElapsedGameTime =

@@ -1,0 +1,5 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment3/Content/Font.spritefont","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment3/Content/bin/Windows/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21529,0.5528278
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment3/Content/SimpleShading.fx","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment3/Content/bin/Windows/SimpleShading.xnb","EffectProcessor","CompiledEffectContent",5725,6917,1.1636912
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment3/Content/Sphere.FBX","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment3/Content/bin/Windows/Sphere.xnb","ModelProcessor","ModelContent",39360,24313,0.2752203
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment3/Content/Square (1).png","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment3/Content/bin/Windows/Square (1).xnb","TextureProcessor","Texture2DContent",213,4181,0.3297701
