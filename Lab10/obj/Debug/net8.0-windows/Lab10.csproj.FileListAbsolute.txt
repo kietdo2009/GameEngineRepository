@@ -1,0 +1,7 @@
+C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\Lab10\obj\Debug\net8.0-windows\mgcb.tool.restore
+C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\Lab10\obj\Debug\net8.0-windows\Lab10.csproj.AssemblyReference.cache
+C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\Lab10\obj\Debug\net8.0-windows\Lab10.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\Lab10\obj\Debug\net8.0-windows\Lab10.AssemblyInfoInputs.cache
+C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\Lab10\obj\Debug\net8.0-windows\Lab10.AssemblyInfo.cs
+C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\Lab10\obj\Debug\net8.0-windows\Lab10.csproj.CoreCompileInputs.cache
+C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\Lab10\obj\Debug\net8.0-windows\Lab10.sourcelink.json

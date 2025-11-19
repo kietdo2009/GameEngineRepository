@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab10/Content/Heightmap.png","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab10/Content/bin/Windows/Content/Heightmap.xnb","TextureProcessor","Texture2DContent",37557,264281,0.2407997
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab10/Content/Normalmap.png","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab10/Content/bin/Windows/Content/Normalmap.xnb","TextureProcessor","Texture2DContent",63954,264281,0.0215164
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab10/Content/TerrainShader.fx","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab10/Content/bin/Windows/Content/TerrainShader.xnb","EffectProcessor","CompiledEffectContent",5725,6917,0.4389381

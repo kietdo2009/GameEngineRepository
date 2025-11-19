@@ -1,59 +1,58 @@
 ﻿using CPI311.GameEngine;
+using Microsoft.VisualBasic.ApplicationServices;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
+
 namespace Lab09
 {
     public class Lab09 : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private AStarSearch search;
-        private List<Vector3> path;
-        private int size;
+
+        // *** Lab 9 *****
+        Model cube;
+        Model sphere;
+        AStarSearch search;
+        List<Vector3> path;
+
+        int size = 100;
         Random random = new Random();
         Camera camera;
-        List<Camera> cameras;
-        Model sphere;
-        Model cube;
+        //*****************
+
 
         public Lab09()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            //LAB 9 **********************
-            Model cube;
-            Model sphere;
-            AStarSearch search;
-            List<Vector3> path;
-            size = 10;
-            cameras = new List<Camera>();
-            //*****************************
         }
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            // ******************************
             Time.Initialize();
             InputManager.Initialize();
             ScreenManager.Initialize(_graphics);
-            
-            search = new AStarSearch(size, size); // size of grid
+            //********************************
+
+            search = new AStarSearch(size, size);
+
             foreach (AStarNode node in search.Nodes)
                 if (random.NextDouble() < 0.2)
                     search.Nodes[random.Next(size), random.Next(size)].Passable = false;
+
             search.Start = search.Nodes[0, 0];
             search.Start.Passable = true;
             search.End = search.Nodes[size - 1, size - 1];
             search.End.Passable = true;
-            
+
             search.Search(); // A search is made here.
+
             path = new List<Vector3>();
             AStarNode current = search.End;
             while (current != null)
@@ -68,31 +67,41 @@ namespace Lab09
 
         protected override void LoadContent()
         {
-            sphere = Content.Load<Model>("Sphere");
-            cube = Content.Load<Model>("cube");
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            // *** Setup main camera (left side of screen) ***
+
+            cube = Content.Load<Model>("cube");
+            sphere = Content.Load<Model>("Sphere");
+
+
             camera = new Camera();
             camera.Transform = new Transform();
-            camera.Transform.LocalPosition = Vector3.Backward * 5;
-            camera.Position = new Vector2(0f, 0f);    // Start at top-left
-            camera.Size = new Vector2(0.5f, 1f);      // 50% width, 100% height
+            camera.Transform.LocalPosition =  
+                Vector3.Right * 50 + Vector3.Backward * 50 + Vector3.Up * 70;
+            camera.Transform.Rotate(Vector3.Right, -MathHelper.PiOver2);
+            camera.Position = new Vector2(0, 0);
+            camera.Size = new Vector2(1.0f, 1.0f);
             camera.AspectRatio = camera.Viewport.AspectRatio;
-            // TODO: use this.Content to load your game content here
-
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            // **********************
             Time.Update(gameTime);
             InputManager.Update();
-            // TODO: Add your update logic here
+            //************************
+
             if (InputManager.IsKeyPressed(Keys.Space))
             {
-                while(!(search.Start = search.Nodes[random.Next(search.Cols), random.Next(search.Rows)]).Passable) ;
-                search.Search();
+                // *** Set the start and end node randomly
+                while (!(search.Start = search.Nodes[
+                    random.Next(search.Cols), random.Next(search.Rows)]).Passable) ;
+                while (!(search.End = search.Nodes[
+                    random.Next(search.Cols), random.Next(search.Rows)]).Passable) ;
+                // *** Search again 
+                search.Search(); // A search is made here.
                 path = new List<Vector3>();
                 AStarNode current = search.End;
                 while (current != null)
@@ -101,6 +110,7 @@ namespace Lab09
                     current = current.Parent;
                 }
             }
+
             base.Update(gameTime);
         }
 
@@ -108,14 +118,16 @@ namespace Lab09
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+
             foreach (AStarNode node in search.Nodes)
                 if (!node.Passable)
-                    cube.Draw(Matrix.CreateScale(0.5f, 0.05f, 0.5f) *
-                    Matrix.CreateTranslation(node.Position), camera.View, camera.Projection);
+                    cube.Draw(Matrix.CreateScale(1f, 1f, 1f) *
+                       Matrix.CreateTranslation(node.Position), camera.View, camera.Projection);
+
             foreach (Vector3 position in path)
-                sphere.Draw(Matrix.CreateScale(0.1f, 0.1f, 0.1f) *
-                Matrix.CreateTranslation(position), camera.View, camera.Projection);
+                sphere.Draw(Matrix.CreateScale(0.5f, 0.5f, 0.5f) *
+                     Matrix.CreateTranslation(position), camera.View, camera.Projection);
+
             base.Draw(gameTime);
         }
     }

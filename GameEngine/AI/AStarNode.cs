@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+
 namespace CPI311.GameEngine
 {
     public class AStarNode
@@ -21,11 +17,13 @@ namespace CPI311.GameEngine
             Col = col;
             Row = row;
             Position = position;// for 3D space
+
             Passable = true;
             Cost = 0;
             Heuristic = 0;
             Parent = null;
             Closed = false;
         }
+
     }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/asteroid1.tga</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/asteroid4.FBX</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/B1_stars.tga</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/bullet.FBX</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/engine_2.wav</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/explosion2.wav</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/explosion3.wav</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/fire.png</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/hyperspace_activate.wav</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/p1_wedge.fbx</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/ParticleShader-complete.fx</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/pea_proj.tga</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/tx0_fire1.wav</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/wedge_p1_diff_v1.tga</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
 
 namespace CPI311.GameEngine
 {
@@ -11,11 +10,13 @@ namespace CPI311.GameEngine
     {
         public int Cols { get; set; }
         public int Rows { get; set; }
+
         public AStarNode[,] Nodes { get; set; }
         public AStarNode Start { get; set; }
         public AStarNode End { get; set; }
 
         private SortedDictionary<float, List<AStarNode>> openList;
+
         public AStarSearch(int rows, int cols)
         {
             openList = new SortedDictionary<float, List<AStarNode>>();
@@ -24,7 +25,7 @@ namespace CPI311.GameEngine
             Nodes = new AStarNode[Rows, Cols];
             for (int r = 0; r < Rows; r++)
                 for (int c = 0; c < Cols; c++)
-                    Nodes[r, c] = new AStarNode(r,c, End.Position);
+                    Nodes[r, c] = new AStarNode(c, r, new Vector3(c, 0, r));
         }
         public void Search()
         {
@@ -38,6 +39,7 @@ namespace CPI311.GameEngine
                 node.Heuristic = Vector3.Distance(node.Position, End.Position);
             }
             #endregion
+
             AddToOpenList(Start); //Add a start point (null parent)
             while (openList.Count > 0) // openlist is not empty
             {
@@ -45,13 +47,13 @@ namespace CPI311.GameEngine
                 if (node == End)
                     break;
                 if (node.Row < Rows - 1)
-                    AddToOpenList(Nodes[node.Row + 1, node.Col], node); // Down
+                    AddToOpenList(Nodes[node.Row + 1, node.Col], node);
                 if (node.Row > 0)
-                    AddToOpenList(Nodes[node.Row - 1, node.Col], node); // Up
+                    AddToOpenList(Nodes[node.Row - 1, node.Col], node);
                 if (node.Col < Cols - 1)
-                    AddToOpenList(Nodes[node.Row, node.Col + 1], node); // Right
+                    AddToOpenList(Nodes[node.Row, node.Col +1 ], node);
                 if (node.Col > 0)
-                    AddToOpenList(Nodes[node.Row, node.Col - 1], node); // Left
+                    AddToOpenList(Nodes[node.Row, node.Col-1], node);
             }
         }
         private void AddToOpenList(AStarNode node, AStarNode parent = null)
@@ -63,7 +65,6 @@ namespace CPI311.GameEngine
                 float cost = parent.Cost + 1;
                 if (node.Cost > cost)
                 {
-
                     RemoveFromOpenList(node);
                     node.Cost = cost;
                     node.Parent = parent;
@@ -76,6 +77,7 @@ namespace CPI311.GameEngine
                 openList[key] = new List<AStarNode>();
             openList[key].Add(node);
         }
+
         private AStarNode GetBestNode()
         {
             AStarNode node = openList.ElementAt(0).Value[0];
@@ -85,6 +87,7 @@ namespace CPI311.GameEngine
             node.Closed = true;
             return node;
         }
+
         private void RemoveFromOpenList(AStarNode node)
         {
             float key = node.Cost + node.Heuristic;
@@ -95,5 +98,6 @@ namespace CPI311.GameEngine
                     openList.Remove(key);
             }
         }
+
     }
 }

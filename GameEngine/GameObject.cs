@@ -75,7 +75,7 @@ namespace CPI311.GameEngine
             }
         }
 
-        public void Update()
+        public virtual void Update()
         {
             foreach (IUpdateable component in Updateables)
                 component.Update();
