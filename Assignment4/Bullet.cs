@@ -7,7 +7,7 @@ namespace Assignment4
 {
     public class Bullet : GameObject
     {
-        bool isActive;
+        public bool isActive;
         public Bullet(ContentManager Content, Camera camera, GraphicsDevice
 graphicsDevice, Light light)
 : base()
@@ -19,7 +19,7 @@ graphicsDevice, Light light)
             Add<Rigidbody>(rigidbody);
             // *** Add Renderer
             Texture2D texture = Content.Load<Texture2D>("Square");
-            Renderer renderer = new Renderer(Content.Load<Model>("Models/bullet"),
+            Renderer renderer = new Renderer(Content.Load<Model>("bullet"),
             Transform, camera, Content, graphicsDevice, light, 1, null, 20f, texture);
             Add<Renderer>(renderer);
             // *** Add collider

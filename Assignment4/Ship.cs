@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using CPI311.GameEngine;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using CPI311.GameEngine;
 
 
 namespace Assignment4
@@ -19,7 +20,27 @@ namespace Assignment4
 
         public Matrix RotationMatrix = Matrix.Identity;
         public float rotation;
+        public Ship(ContentManager Content, Camera camera, GraphicsDevice graphicsDevice, Light light) : base()
+        {
+            // Add Rigidbody, Collider, Renderer components
+            // *** Add Rigidbody
+            Rigidbody rigidbody = new Rigidbody();
+            rigidbody.Transform = Transform;
+            rigidbody.Mass = 1;
+            Add<Rigidbody>(rigidbody);
 
+            // *** Add Renderer
+            Texture2D texture = Content.Load<Texture2D>("wedge_p1_diff_v1");
+            Renderer renderer = new Renderer(Content.Load<Model>("p1_wedge"),
+            Transform, camera, Content, graphicsDevice, light, 1, null, 20f, texture);
+            Add<Renderer>(renderer);
+
+            // *** Add collider
+            SphereCollider sphereCollider = new SphereCollider();
+            sphereCollider.Radius = renderer.ObjectModel.Meshes[0].BoundingSphere.Radius;
+            sphereCollider.Transform = Transform;
+            Add<Collider>(sphereCollider);
+        }
         public float Rotation
         {
             get { return rotation; }
@@ -40,12 +61,29 @@ namespace Assignment4
                 }
             }
         }
-        public void Update(GamePadState controllerState)
+        // Inside Ship.cs
+
+        public override void Update()
         {
-            Rotation -= controllerState.ThumbSticks.Left.X * 0.1f;
+            // 1. Handle Rotation
+            if (InputManager.IsKeyDown(Keys.A))
+                Transform.LocalPosition += Transform.Left * Time.ElapsedGameTime * GameConstants.VelocityScale * 500;
 
-            Velocity += RotationMatrix.Forward * 1.0f * controllerState.Triggers.Right;
+            if (InputManager.IsKeyDown(Keys.D))
+                Transform.LocalPosition -= Transform.Left* Time.ElapsedGameTime * GameConstants.VelocityScale * 500;
 
+            // 2. Handle Movement
+            // Use Transform.Forward so it moves in the direction it's facing
+            if (InputManager.IsKeyDown(Keys.W))
+                Transform.LocalPosition += Transform.Forward * Time.ElapsedGameTime * GameConstants.VelocityScale*500;
+
+            if (InputManager.IsKeyDown(Keys.S))
+                Transform.LocalPosition -= Transform.Forward * Time.ElapsedGameTime * GameConstants.VelocityScale* 500;
+
+            Position = Transform.LocalPosition;
+
+            base.Update();
         }
+
     }
 }

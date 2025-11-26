@@ -81,7 +81,7 @@ namespace CPI311.GameEngine
                 component.Update();
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
             foreach (IRenderable component in Renderables)
                 component.Draw();

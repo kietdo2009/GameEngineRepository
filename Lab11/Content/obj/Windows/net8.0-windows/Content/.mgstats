@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab11/Content/Font.spritefont","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab11/Content/bin/Windows/Content/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21529,0.2421102
+"C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab11/Content/Square.png","C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Lab11/Content/bin/Windows/Content/Square.xnb","TextureProcessor","Texture2DContent",213,4181,0.0183375

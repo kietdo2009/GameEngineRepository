@@ -1,58 +1,52 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace CPI311.GameEngine
 {
-    public class TerrainRenderer : Component, IRenderable
+    public class TerrainRenderer : Component
     {
-        // *** 1. ADD A FIELD TO STORE THE GRAPHICS DEVICE ***
-        private GraphicsDevice graphicsDevice;
-
         private VertexPositionTexture[] Vertices { get; set; }
         private int[] Indices { get; set; }
 
-        private float[] heights;
-        private Texture2D HeightMap { get; set; }
+        public Texture2D HeightMap { get; set; }
         public Texture2D NormalMap { get; set; }
-        private Vector2 size;
+        
+        public Vector2 size;
 
-        // *** 2. ADD 'GraphicsDevice' TO THE CONSTRUCTOR ***
-        public TerrainRenderer(Texture2D texture, Vector2 size, Vector2 res, GraphicsDevice graphicsDevice)
+        public float[] Heights { get; set; }
+
+
+        public TerrainRenderer(Texture2D texture, Vector2 size, Vector2 res)
         {
-            // *** 3. STORE THE GRAPHICS DEVICE ***
-            this.graphicsDevice = graphicsDevice;
 
             HeightMap = texture;
             this.size = size;
 
-            CreateHeights();
+            CreateHeights(); //  Heights[] data is crated 
 
+            // We should also save the value of size somewhere
             int rows = (int)res.Y + 1;
             int cols = (int)res.X + 1;
 
             Vector3 offset = new Vector3(-size.X / 2, 0, -size.Y / 2);
             float stepX = size.X / res.X;
             float stepZ = size.Y / res.Y;
-
+            // *** Setting Vertex Buffer
             Vertices = new VertexPositionTexture[rows * cols];
             for (int r = 0; r < rows; r++)
-            {
                 for (int c = 0; c < cols; c++)
-                {
-                    Vector2 texCoords = new Vector2(c / res.X, r / res.Y);
-                    float height = GetHeight(texCoords);
-
                     Vertices[r * cols + c] = new VertexPositionTexture(
-                        offset + new Vector3(c * stepX, height, r * stepZ),
-                        texCoords);
-                }
-            }
+                        offset + new Vector3(
+                            c * stepX,
+                            GetHeight(new Vector2(c/res.X, r/res.Y)), //***  0, (Flat)
+                            r * stepZ),
+                        new Vector2(c / res.X, r / res.Y));
 
-            Indices = new int[(rows - 1) * (cols - 1) * 6];
+            // *** Setting Index Buffer
+            Indices = new int[(rows - 1) *(cols - 1) *6];
             int index = 0;
             for (int r = 0; r < rows - 1; r++)
-            {
                 for (int c = 0; c < cols - 1; c++)
                 {
                     Indices[index++] = r * cols + c;
@@ -63,63 +57,57 @@ namespace CPI311.GameEngine
                     Indices[index++] = r * cols + c + 1;
                     Indices[index++] = (r + 1) * cols + c + 1;
                 }
-            }
         }
 
-        // ... (CreateHeights and GetHeight methods are unchanged) ...
+
+        public void Draw()
+        {
+            // Setup custom shader etc.
+            ScreenManager.GraphicsDevice.DrawUserIndexedPrimitives<VertexPositionTexture>
+                (PrimitiveType.TriangleList,
+                Vertices, 0, Vertices.Length, Indices, 0, Indices.Length / 3);
+        }
+        // ***********************************************
+        public float GetHeight(Vector2 tex)
+        {
+            // First, scale it to dimensions of the image
+            tex = Vector2.Clamp(tex, Vector2.Zero, Vector2.One) *
+                        new Vector2(HeightMap.Width - 1, HeightMap.Height - 1); 
+            int x = (int)tex.X; 
+            float u = tex.X - x;
+
+            int y = (int)tex.Y; 
+            float v = tex.Y - y;
+            return Heights[y * HeightMap.Width + x] * (1 - u) *(1 - v) +
+                Heights[y * HeightMap.Width + Math.Min((x+1), HeightMap.Width-1)] * u * (1 - v) +
+                Heights[Math.Min((y + 1), HeightMap.Height-1) * HeightMap.Width + x] * (1 - u ) *v +
+                Heights[Math.Min((y + 1), HeightMap.Height-1) * HeightMap.Width + Math.Min((x + 1), HeightMap.Width - 1)] * u * v;
+        }
         private void CreateHeights()
         {
             Color[] data = new Color[HeightMap.Width * HeightMap.Height];
             HeightMap.GetData<Color>(data);
-            heights = new float[HeightMap.Width * HeightMap.Height];
-            for (int i = 0; i < heights.Length; i++)
-                heights[i] = data[i].G / 255f;
+            Heights = new float[HeightMap.Width * HeightMap.Height];
+            for (int i = 0; i < Heights.Length; i++)
+                Heights[i] = data[i].G / 255f;
         }
 
-        public float GetHeight(Vector2 tex)
-        {
-            tex = Vector2.Clamp(tex, Vector2.Zero, Vector2.One) *
-                  new Vector2(HeightMap.Width - 1, HeightMap.Height - 1);
-
-            int x = (int)tex.X; float u = tex.X - x;
-            int y = (int)tex.Y; float v = tex.Y - y;
-
-            int x1 = Math.Min(x + 1, HeightMap.Width - 1);
-            int y1 = Math.Min(y + 1, HeightMap.Height - 1);
-
-            return heights[y * HeightMap.Width + x] * (1 - u) * (1 - v) +
-                   heights[y * HeightMap.Width + x1] * u * (1 - v) +
-                   heights[y1 * HeightMap.Width + x] * (1 - u) * v +
-                   heights[y1 * HeightMap.Width + x1] * u * v;
-        }
-
-
+        // *** Get the y value (height) from 3D position (X, 0, Z)  
         public float GetAltitude(Vector3 position)
         {
             position = Vector3.Transform(position, Matrix.Invert(Transform.World));
 
             if (position.X > -size.X / 2 && position.X < size.X / 2 &&
-                position.Z > -size.Y / 2 && position.Z < size.Y / 2)
-            {
-                Vector2 texCoords = new Vector2(
-                    (position.X + size.X / 2) / size.X,
-                    (position.Z + size.Y / 2) / size.Y
-                );
-
-                return GetHeight(texCoords) * Transform.LocalScale.Y;
-            }
+                              position.Z > -size.Y / 2 && position.Z < size.Y / 2)
+                return GetHeight( new Vector2 (                  
+                    (position.X + (size.X / 2))/size.X,
+                    (position.Z + (size.Y / 2))/size.Y
+                    )) * Transform.LocalScale.Y ;
             return -1;
         }
 
-        public void Draw()
-        {
-            if (Vertices == null || Indices == null)
-                return;
 
-            this.graphicsDevice.DrawUserIndexedPrimitives
-                <VertexPositionTexture>(PrimitiveType.TriangleList,
-                Vertices, 0, Vertices.Length, // Fixed typo here
-                Indices, 0, Indices.Length / 3);
-        }
+
+
     }
 }

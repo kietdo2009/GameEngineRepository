@@ -4,6 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/ParticleShader-complete.fx</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/asteroid1.tga</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/asteroid4.FBX</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/B1_stars.tga</File>
@@ -14,25 +15,12 @@
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/fire.png</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/hyperspace_activate.wav</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/p1_wedge.fbx</File>
-    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/ParticleShader-complete.fx</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/pea_proj.tga</File>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/Square.png</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/tx0_fire1.wav</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment4/Content/wedge_p1_diff_v1.tga</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
