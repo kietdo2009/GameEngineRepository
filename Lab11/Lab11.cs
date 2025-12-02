@@ -149,7 +149,15 @@ namespace Lab11
         }
         void SwitchScene(GUIElement element)
         {
-            currentScene= (currentScene == scenes["Menu"] ? scenes["Play"] : scenes["Menu"]);
+            // Cast the generic GUIElement back to CheckBox to access the Checked property
+            CheckBox checkBox = element as CheckBox;
+
+            if (checkBox != null)
+            {
+                // If the checkbox is checked, switch to "Play", otherwise switch to "Menu"
+                currentScene = checkBox.Checked ? scenes["Play"] : scenes["Menu"];
+            }
+
         }
     }
 }

@@ -23,3 +23,4 @@ C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\GameEngine\obj\Deb
 C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\GameEngine\obj\Debug\net8.0-windows\refint\GameEngine.dll
 C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\GameEngine\obj\Debug\net8.0-windows\GameEngine.pdb
 C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\GameEngine\obj\Debug\net8.0-windows\ref\GameEngine.dll
+C:\Users\kietd\OneDrive\Documents\GitHub\GameEngineRepository\GameEngine\obj\Debug\net8.0-windows\mgcb.tool.restore
