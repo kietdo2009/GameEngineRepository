@@ -1,11 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CPI311.GameEngine
 {
     public static class InputManager
@@ -14,7 +8,6 @@ namespace CPI311.GameEngine
         static KeyboardState CurrentKeyboardState { get; set; }
         static MouseState PreviousMouseState { get; set; }
         static MouseState CurrentMouseState { get; set; }
-
         public static void Initialize()
         {
             PreviousKeyboardState = CurrentKeyboardState =
@@ -42,87 +35,81 @@ namespace CPI311.GameEngine
             return CurrentKeyboardState.IsKeyDown(key) &&
             PreviousKeyboardState.IsKeyUp(key);
         }
-
         public static bool IsKeyReleased(Keys key)
         {
-            return CurrentKeyboardState.IsKeyDown(key) &&
-            PreviousKeyboardState.IsKeyUp(key);
+            return CurrentKeyboardState.IsKeyUp(key) &&
+            PreviousKeyboardState.IsKeyDown(key);
         }
+        // *** Lab 8 *********************************************
         public static Vector2 GetMousePosition()
         {
             return new Vector2(CurrentMouseState.X, CurrentMouseState.Y);
         }
-        public static bool IsMouseDown(int button)
+        //******************************************************
+        public static bool IsMousePressed(int mouseButton)
         {
-            switch (button)
+            switch (mouseButton)
             {
                 case 0:
-                    return CurrentMouseState.LeftButton ==
-                    ButtonState.Pressed;
+                    return PreviousMouseState.LeftButton == ButtonState.Pressed &&
+                    CurrentMouseState.LeftButton == ButtonState.Pressed;
                 case 1:
-                    return CurrentMouseState.RightButton ==
-                    ButtonState.Pressed;
+                    return PreviousMouseState.RightButton == ButtonState.Pressed &&
+                    CurrentMouseState.RightButton == ButtonState.Pressed;
                 case 2:
-                    return CurrentMouseState.MiddleButton ==
-                    ButtonState.Pressed;
+                    return PreviousMouseState.MiddleButton == ButtonState.Pressed
+                    &&
+                    CurrentMouseState.MiddleButton == ButtonState.Pressed;
                 default:
                     return false;
             }
         }
-        public static bool IsMouseUp(int button)
+        public static bool IsMouseReleased(int mouseButton)
         {
-            switch (button)
+            switch (mouseButton)
             {
                 case 0:
-                    return CurrentMouseState.LeftButton ==
-                    ButtonState.Released;
+                    return PreviousMouseState.LeftButton == ButtonState.Pressed &&
+                    CurrentMouseState.LeftButton == ButtonState.Released;
                 case 1:
-                    return CurrentMouseState.RightButton ==
-                    ButtonState.Released;
+                    return PreviousMouseState.RightButton == ButtonState.Pressed &&
+                    CurrentMouseState.RightButton == ButtonState.Released;
                 case 2:
-                    return CurrentMouseState.MiddleButton ==
-                    ButtonState.Released;
+                    return PreviousMouseState.MiddleButton == ButtonState.Pressed
+                    &&
+                    CurrentMouseState.MiddleButton == ButtonState.Released;
                 default:
                     return false;
             }
         }
-        // Fix for CS0161: Ensure all code paths return a value.
-        // Fix for IDE0060: Remove unused parameter 'key' since it is not used and not part of a shipped public API.
-        public static bool IsMouseReleased(int button)
+        public static bool IsMouseDown(int mouseButton)
         {
-            switch (button)
+            switch (mouseButton)
             {
                 case 0:
-                    return CurrentMouseState.LeftButton == ButtonState.Released &&
-                           PreviousMouseState.LeftButton == ButtonState.Pressed;
+                    return CurrentMouseState.LeftButton == ButtonState.Pressed;
                 case 1:
-                    return CurrentMouseState.RightButton == ButtonState.Released &&
-                           PreviousMouseState.RightButton == ButtonState.Pressed;
+                    return CurrentMouseState.RightButton == ButtonState.Pressed;
                 case 2:
-                    return CurrentMouseState.MiddleButton == ButtonState.Released &&
-                           PreviousMouseState.MiddleButton == ButtonState.Pressed;
+                    return CurrentMouseState.MiddleButton == ButtonState.Pressed;
                 default:
                     return false;
             }
         }
-        public static bool IsMousePressed(int button)
+        public static bool IsMouseUp(int mouseButton)
         {
-            switch (button)
+            switch (mouseButton)
             {
                 case 0:
-                    return CurrentMouseState.LeftButton == ButtonState.Pressed &&
-                           PreviousMouseState.LeftButton == ButtonState.Released;
+                    return CurrentMouseState.LeftButton == ButtonState.Released;
                 case 1:
-                    return CurrentMouseState.RightButton == ButtonState.Pressed &&
-                           PreviousMouseState.RightButton == ButtonState.Released;
+                    return CurrentMouseState.RightButton == ButtonState.Released;
                 case 2:
-                    return CurrentMouseState.MiddleButton == ButtonState.Pressed &&
-                           PreviousMouseState.MiddleButton == ButtonState.Released;
+                    return CurrentMouseState.MiddleButton == ButtonState.Released;
                 default:
                     return false;
             }
         }
-
+        
     }
 }
-
