@@ -37,10 +37,15 @@ namespace FinalProject
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             scenes = new Dictionary<string, GameScene>();
+            SoundManager.Load(Content);
 
             // Initialize Scenes
             scenes.Add("Menu", new MainMenu(this));
             scenes.Add("Tutorial", new Tutorial(this));
+            scenes.Add("Level2", new Level2(this));
+            scenes.Add("Level3", new Level3(this));
+            scenes.Add("Credits", new Credits(this));
+
 
             // Load Content for ALL scenes
             foreach (var scene in scenes.Values)
