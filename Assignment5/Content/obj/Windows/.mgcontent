@@ -4,6 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment5/Content/Font.spritefont</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment5/Content/mazeH.png</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment5/Content/mazeH2.png</File>
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment5/Content/mazeN.png</File>
@@ -14,6 +15,7 @@
     <File>C:/Users/kietd/OneDrive/Documents/GitHub/GameEngineRepository/Assignment5/Content/TerrainShader.fx</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

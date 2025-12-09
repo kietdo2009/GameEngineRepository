@@ -25,7 +25,7 @@ namespace Assignment5
 
             // Add a Sphere renderer so we can see the player
             // We use a simple sphere model for the player representation
-            Texture2D texture = Content.Load<Texture2D>("Square"); // Ensure you have a texture named Square or similar
+            Texture2D texture = Content.Load<Texture2D>("Square"); 
             Renderer renderer = new Renderer(Content.Load<Model>("Sphere"), Transform, camera, Content, graphicsDevice, light, 1, "SimpleShading", 20f, texture);
             Add<Renderer>(renderer);
 
@@ -72,5 +72,6 @@ namespace Assignment5
 
             base.Update();
         }
+
     }
 }

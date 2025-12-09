@@ -53,9 +53,9 @@ namespace CPI311.GameEngine
                 throw new InvalidOperationException("TerrainRenderer.Effect is null. Set an Effect before drawing.");
 
             // set effect parameters here, e.g. textures, matrices, light info:
-            // Effect.Parameters["World"].SetValue(Transform.World);
-            // Effect.Parameters["HeightMap"].SetValue(HeightMap);
-            // Effect.Parameters["NormalMap"].SetValue(NormalMap);
+            //Effect.Parameters["World"].SetValue(Transform.World);
+            //Effect.Parameters["HeightMap"].SetValue(HeightMap);
+            //Effect.Parameters["NormalMap"].SetValue(NormalMap);
 
             foreach (var pass in Effect.CurrentTechnique.Passes)
             {
